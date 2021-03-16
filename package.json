@@ -9,6 +9,7 @@
   "author": "laura moon",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "html-to-text": "^7.0.0"
   }
 }

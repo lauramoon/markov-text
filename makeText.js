@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const axios = require('axios');
+const { htmlToText } = require('html-to-text');
 const {MarkovMachine} = require('./markov');
 const argv = process.argv;
 
@@ -18,8 +19,11 @@ function useFile(path) {
 
 async function useURL(url) {
     try {
-        res = await axios.get(url);
-        console.log(getMarkovText(res.data));
+        const res = await axios.get(url);
+        const text = htmlToText(res.data, {
+            wordwrap: false
+        });
+        console.log(getMarkovText(text));
     } catch (err) {
         console.log(`Error fetching ${url}:`);
         console.log("  " + err);
