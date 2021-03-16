@@ -51,7 +51,8 @@ class MarkovMachine {
   makeText(numWords = 100) {
     let words = Object.keys(this.chains);
 
-    let text = this.randomPick(words);
+    let capWords = words.filter(word => word[0] === word[0].toUpperCase());
+    let text = this.randomPick(capWords);
     let firstWord = text;
     let nextWord = this.singleChain(firstWord);
 
